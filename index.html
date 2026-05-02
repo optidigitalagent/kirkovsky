@@ -23,12 +23,7 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
-body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;cursor:none}
-
-/* CUSTOM CURSOR */
-.cursor{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transition:transform .15s,width .25s,height .25s;mix-blend-mode:multiply}
-.cursor-ring{position:fixed;top:0;left:0;width:36px;height:36px;border:1px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9998;transition:transform .08s}
-body:has(a:hover) .cursor,.cursor.link{width:20px;height:20px}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
 
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:6px}
@@ -783,8 +778,6 @@ footer{
 <body>
 
 <!-- CUSTOM CURSOR -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursor-ring"></div>
 
 <!-- FLOATING BOOK BUTTON -->
 <a href="#booking" class="float-book">Записатися</a>
@@ -1305,20 +1298,6 @@ footer{
 </footer>
 
 <script>
-// CURSOR
-const cursor=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  cursor.style.transform=`translate(${mx-5}px,${my-5}px)`;
-});
-function animRing(){
-  rx+=(mx-rx-18)*.12;ry+=(my-ry-18)*.12;
-  ring.style.transform=`translate(${rx}px,${ry}px)`;
-  requestAnimationFrame(animRing);
-}
-animRing();
-
 // NAV SCROLL
 const nav=document.getElementById('mainNav');
 window.addEventListener('scroll',()=>{
